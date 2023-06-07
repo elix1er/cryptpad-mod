@@ -5,12 +5,13 @@ services:
   cryptpad:
     image: "promasu/cryptpad:nginx"
     hostname: cryptpad
-
     environment:
-      - CPAD_MAIN_DOMAIN=example.com
-      - CPAD_SANDBOX_DOMAIN=sandbox.example.com
+      - CPAD_MAIN_DOMAIN=crypt.web4.zone
+      - CPAD_SANDBOX_DOMAIN=sandbox.gtfo.web4.zone
       # Traefik can't use HTTP2 to communicate with cryptpad_websocket
-      # A workaround is to disable HTTP2 in Nginx
+      # ... http upgrade that ws might help plebs
+      # nvm using c4ddy 4now
+      # A workaround is to disable HTTP2 in Nginx (muh srsly)
       - CPAD_HTTP2_DISABLE=true
 
     volumes:
@@ -22,12 +23,11 @@ services:
       - ./data/config.js:/cryptpad/config/config.js
 
     ports:
-      - "80:80"
-      - "443:443"
-
+      - "780:80"
+      - "7443:443"
     expose:
-      - "80"
-      - "443"
+      - "780"
+      - "7443"
 
     ulimits:
       nofile:
